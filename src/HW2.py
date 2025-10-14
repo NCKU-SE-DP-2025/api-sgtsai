@@ -1,7 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 
 app2 = FastAPI()
 
-@app2.get("/api/v1/rectangle-area/{width}/{height}")
-def get_area(width: int, height: int):
-    return {"area": width * height}
+@app2.get("/api/v1/rectangle-area")
+def get_rectangle_area(width: int = Query(...), height: int = Query(...)):
+    return width * height
